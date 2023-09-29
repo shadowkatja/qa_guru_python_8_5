@@ -12,3 +12,5 @@ def test_submit_student_registration_form():
     browser.element('#userEmail').should(be.blank).click().type('CL16@test.com')
     # Fill gender
     browser.element('[for="gender-radio-1"]').click()
+    # fill phone number
+    browser.element('#userNumber').should(be.blank).click().type('22312862')
