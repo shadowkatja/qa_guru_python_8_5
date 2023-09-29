@@ -1,10 +1,12 @@
-from selene import be, have
-from selene.support.shared import browser
 import os
+
+from selene import be, have
 from selene import command
+from selene.support.shared import browser
+
 
 def test_submit_student_registration_form():
-    #open url
+    # open url
     browser.open('/automation-practice-form')
     # Fill name
     browser.element('#firstName').should(be.blank).click().type('Charles')
@@ -26,19 +28,19 @@ def test_submit_student_registration_form():
     browser.element('#subjectsInput').click().type('arts').press_enter().type('his').press_enter()
     # fill hobbies
     browser.with_(timeout=browser.config.timeout * 2).element('[for="hobbies-checkbox-1"]').click()
-    #scrolling to the state
+    # scrolling to the state
     browser.element('#state').perform(command.js.scroll_into_view)
     # add picture
     browser.element('#uploadPicture').send_keys(os.path.abspath('image/image.png'))
-    #add address
+    # add address
     browser.element('#currentAddress').should(be.blank).click().type('Monaco, Avenue de la Costa')
-    #add state and city
+    # add state and city
     browser.element('#react-select-3-input').type('ha').press_enter()
     browser.element('#react-select-4-input').type('pa').press_enter()
-    #press submit
+    # press submit
     browser.element('#submit').execute_script('element.click()')
 
-    #checking
+    # checking
     browser.element('.table').all('tr td:nth-child(2)').should(have.texts
         (
         'Charles Leclerc',
