@@ -25,7 +25,7 @@ def test_submit_student_registration_form():
     # fill subjects
     browser.element('#subjectsInput').click().type('arts').press_enter().type('his').press_enter()
     # fill hobbies
-    browser.with_(timeout=browser.config.timeout * 6).element('[for="hobbies-checkbox-1"]').click()
+    browser.with_(timeout=browser.config.timeout * 2).element('[for="hobbies-checkbox-1"]').click()
     #scrolling to the state
     browser.element('#state').perform(command.js.scroll_into_view)
     # add picture
@@ -39,7 +39,7 @@ def test_submit_student_registration_form():
     browser.element('#submit').execute_script('element.click()')
 
     #checking
-    browser.with_(timeout=browser.config.timeout * 6).element('.table').all('tr td:nth-child(2)').should(have.texts
+    browser.element('.table').all('tr td:nth-child(2)').should(have.texts
         (
         'Charles Leclerc',
         'CL16@test.com',
