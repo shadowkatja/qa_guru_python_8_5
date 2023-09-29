@@ -14,7 +14,7 @@ def test_submit_student_registration_form():
     # Fill gender
     browser.element('[for="gender-radio-1"]').click()
     # fill phone number
-    browser.element('#userNumber').should(be.blank).click().type('79009009090')
+    browser.element('#userNumber').should(be.blank).click().type('7900900909')
     # fill birthdate
     browser.element('#dateOfBirthInput').click()
     browser.element('[class = "react-datepicker__year-select"]').click()
@@ -25,7 +25,7 @@ def test_submit_student_registration_form():
     # fill subjects
     browser.element('#subjectsInput').click().type('arts').press_enter().type('his').press_enter()
     # fill hobbies
-    browser.element('[for="hobbies-checkbox-1"]').click()
+    browser.with_(timeout=browser.config.timeout * 6).element('[for="hobbies-checkbox-1"]').click()
     #scrolling to the state
     browser.element('#state').perform(command.js.scroll_into_view)
     # add picture
@@ -37,3 +37,18 @@ def test_submit_student_registration_form():
     browser.element('#react-select-4-input').type('pa').press_enter()
     #press submit
     browser.element('#submit').execute_script('element.click()')
+
+    #checking
+    browser.with_(timeout=browser.config.timeout * 6).element('.table').all('tr td:nth-child(2)').should(have.texts
+        (
+        'Charles Leclerc',
+        'CL16@test.com',
+        'Male',
+        '7900900909',
+        '16 October,1997',
+        'Arts, History',
+        'Sports',
+        'image.png',
+        'Monaco, Avenue de la Costa',
+        'Haryana Panipat'
+    ))
