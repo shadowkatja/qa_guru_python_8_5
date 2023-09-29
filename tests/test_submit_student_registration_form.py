@@ -1,6 +1,8 @@
 import pytest
 from selene import be, have
 from selene.support.shared import browser
+import os
+from selene import command
 
 def test_submit_student_registration_form():
     #open url
@@ -22,6 +24,10 @@ def test_submit_student_registration_form():
     browser.element('[value = "9"]').click()
     browser.element('[class = "react-datepicker__day react-datepicker__day--016"]').click()
     # fill subjects
-    browser.element('#subjectsInput').click().type('Arts').press_enter()
+    browser.element('#subjectsInput').click().type('arts').press_enter().type('his').press_enter()
     # fill hobbies
     browser.element('[for="hobbies-checkbox-1"]').click()
+    #scrolling to the state
+    browser.element('#state').perform(command.js.scroll_into_view)
+    # add picture
+    browser.element('#uploadPicture').send_keys(os.path.abspath('image/image.png'))
