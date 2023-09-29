@@ -35,3 +35,5 @@ def test_submit_student_registration_form():
     #add state and city
     browser.element('#react-select-3-input').type('ha').press_enter()
     browser.element('#react-select-4-input').type('pa').press_enter()
+    #press submit
+    browser.element('#submit').execute_script('element.click()')
