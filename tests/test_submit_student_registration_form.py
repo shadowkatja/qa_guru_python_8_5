@@ -1,4 +1,3 @@
-import pytest
 from selene import be, have
 from selene.support.shared import browser
 import os
@@ -31,3 +30,5 @@ def test_submit_student_registration_form():
     browser.element('#state').perform(command.js.scroll_into_view)
     # add picture
     browser.element('#uploadPicture').send_keys(os.path.abspath('image/image.png'))
+    #add address
+    browser.element('#currentAddress').should(be.blank).click().type('Monaco, Avenue de la Costa')
