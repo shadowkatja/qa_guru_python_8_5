@@ -21,3 +21,5 @@ def test_submit_student_registration_form():
     browser.element('[class = "react-datepicker__month-select"]').click()
     browser.element('[value = "9"]').click()
     browser.element('[class = "react-datepicker__day react-datepicker__day--016"]').click()
+    # fill subjects
+    browser.element('#subjectsInput').click().type('Arts').press_enter()
