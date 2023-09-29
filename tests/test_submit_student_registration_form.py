@@ -14,3 +14,10 @@ def test_submit_student_registration_form():
     browser.element('[for="gender-radio-1"]').click()
     # fill phone number
     browser.element('#userNumber').should(be.blank).click().type('22312862')
+    # fill birthdate
+    browser.element('#dateOfBirthInput').click()
+    browser.element('[class = "react-datepicker__year-select"]').click()
+    browser.element('[value = "1997"]').click()
+    browser.element('[class = "react-datepicker__month-select"]').click()
+    browser.element('[value = "9"]').click()
+    browser.element('[class = "react-datepicker__day react-datepicker__day--016"]').click()
