@@ -13,7 +13,7 @@ def test_submit_student_registration_form():
     # Fill gender
     browser.element('[for="gender-radio-1"]').click()
     # fill phone number
-    browser.element('#userNumber').should(be.blank).click().type('22312862')
+    browser.element('#userNumber').should(be.blank).click().type('79009009090')
     # fill birthdate
     browser.element('#dateOfBirthInput').click()
     browser.element('[class = "react-datepicker__year-select"]').click()
@@ -23,3 +23,5 @@ def test_submit_student_registration_form():
     browser.element('[class = "react-datepicker__day react-datepicker__day--016"]').click()
     # fill subjects
     browser.element('#subjectsInput').click().type('Arts').press_enter()
+    # fill hobbies
+    browser.element('[for="hobbies-checkbox-1"]').click()
