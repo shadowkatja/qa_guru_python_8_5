@@ -32,3 +32,6 @@ def test_submit_student_registration_form():
     browser.element('#uploadPicture').send_keys(os.path.abspath('image/image.png'))
     #add address
     browser.element('#currentAddress').should(be.blank).click().type('Monaco, Avenue de la Costa')
+    #add state and city
+    browser.element('#react-select-3-input').type('ha').press_enter()
+    browser.element('#react-select-4-input').type('pa').press_enter()
