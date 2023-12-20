@@ -1,4 +1,4 @@
-# qa_guru_python_8_5
+# Homework for QA GURU Python lesson 5
 
 Task:
 
